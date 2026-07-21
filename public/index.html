@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModerUtills</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <nav class="nav" id="nav">
+        <div class="nav-brand">
+            <img src="/logo.png" class="nav-logo" alt="">
+            <span>ModerUtills</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+        </div>
+    </nav>
+
+    <div class="container" id="app">
+        <!-- Auth Page (register + login) -->
+        <div class="page active visible" id="page-auth">
+            <div class="login-box">
+                <div class="card">
+                    <div id="registerForm">
+                        <div class="auth-logo"><img src="/logo.png" alt="ModerUtills"></div>
+                        <div class="login-title">ModerUtills</div>
+                        <div class="login-subtitle">Create your account</div>
+                        <div id="authStatus"></div>
+                        <form id="regForm" autocomplete="off">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input class="form-input" type="text" id="regUsername" placeholder="Choose a username" autocomplete="username">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-input" type="password" id="regPassword" placeholder="Choose a password" autocomplete="new-password">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="regRemember">
+                                <label for="regRemember">Remember Me</label>
+                            </div>
+                            <button class="btn btn-primary" type="submit" id="regBtn">Register</button>
+                        </form>
+                        <div style="text-align:center;margin-top:18px;font-size:13px;color:var(--text-dim);">
+                            Already have an account?
+                            <button class="btn btn-ghost btn-sm" id="showLoginBtn" style="margin-left:6px;">Sign In</button>
+                        </div>
+                    </div>
+                    <div id="loginForm" style="display:none;">
+                        <div class="auth-logo"><img src="/logo.png" alt="ModerUtills"></div>
+                        <div class="login-title">ModerUtills</div>
+                        <div class="login-subtitle">Sign in to your account</div>
+                        <div id="loginStatus"></div>
+                        <form id="loginFormInner" autocomplete="off">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input class="form-input" type="text" id="loginUsername" placeholder="Enter username" autocomplete="username">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-input" type="password" id="loginPassword" placeholder="Enter password" autocomplete="current-password">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="loginRemember">
+                                <label for="loginRemember">Remember Me</label>
+                            </div>
+                            <button class="btn btn-primary" type="submit" id="loginBtn">Sign In</button>
+                        </form>
+                        <div style="text-align:center;margin-top:18px;font-size:13px;color:var(--text-dim);">
+                            Don't have an account?
+                            <button class="btn btn-ghost btn-sm" id="showRegBtn" style="margin-left:6px;">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div class="page" id="page-dashboard">
+            <div class="card fade-in">
+                <div class="card-title">Personal Cabinet</div>
+                <div id="dashStatus"></div>
+                <div class="form-group">
+                    <label>License Key</label>
+                    <div class="key-entry-row">
+                        <input class="form-input" type="text" id="keyInput" placeholder="MA-XXXX-XXXX-XXXX-XXXX" autocomplete="off">
+                        <button class="btn btn-primary" id="claimKeyBtn">Activate</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card fade-in" id="subscriptionCard" style="display:none;">
+                <div class="card-title">Subscription Info</div>
+                <div class="sub-info" id="subInfo"></div>
+            </div>
+            <div class="card fade-in" id="keysCard">
+                <div class="card-title">My Keys</div>
+                <div id="keysList"></div>
+            </div>
+            <div class="card fade-in download-section">
+                <div class="card-title">Download Mod</div>
+                <p style="color:var(--text-dim);font-size:14px;margin-bottom:8px;">Download the latest version of ModerUtills</p>
+                <div id="modVersionInfo"></div>
+                <button class="btn btn-primary" id="downloadBtn">Download Mod</button>
+            </div>
+        </div>
+
+        <!-- Admin Page -->
+        <div class="page" id="page-admin">
+            <div class="card fade-in">
+                <div class="card-title">Admin Panel</div>
+                <div id="adminStatus"></div>
+                <div class="admin-grid">
+                    <div class="card">
+                        <div class="card-title" style="font-size:16px;">Online Users</div>
+                        <div id="onlineUsers" style="text-align:center;padding:16px;">
+                            <span class="spinner"></span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="font-size:16px;">Create Key</div>
+                        <div class="form-group">
+                            <label>Duration (days)</label>
+                            <input class="form-input" type="number" id="keyDuration" value="30" min="1" max="365">
+                        </div>
+                        <button class="btn btn-green" id="createKeyBtn" style="width:100%;">Generate</button>
+                        <div id="newKeyResult" style="margin-top:12px;font-size:13px;word-break:break-all;color:var(--green);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">Users</div>
+                <div style="overflow-x:auto;" id="usersTableContainer"></div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">License Keys</div>
+                <div style="overflow-x:auto;" id="keysTableContainer"></div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">Activity Log</div>
+                <div style="overflow-x:auto;" id="activityContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

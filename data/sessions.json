@@ -1,0 +1,37 @@
+{
+  "6682907bf29064eec8f86732189825d93fd1c9744e4c3b5249623f9c5cde617d": {
+    "username": "testuser2",
+    "role": "not_user",
+    "createdAt": 1784648043161,
+    "expiresAt": 1784734443161,
+    "lastActivity": 1784648043161
+  },
+  "9e6cc46354f4063b6ba91f07c982b6a70618d5a01881fe7c61419b2c7579b322": {
+    "username": "unluck",
+    "role": "superadmin",
+    "createdAt": 1784648043180,
+    "expiresAt": 1784734443180,
+    "lastActivity": 1784648043180
+  },
+  "02c9a9edc68be7cdcb97d425f6195b0cefa521de29305aa8aaed42349797a992": {
+    "username": "test999",
+    "role": "not_user",
+    "createdAt": 1784648090913,
+    "expiresAt": 1784734490913,
+    "lastActivity": 1784648090913
+  },
+  "f46394fad882631ad2451e6b8b3307b0a08a552cb89e72214fa4543572cfedb5": {
+    "username": "unluck",
+    "role": "superadmin",
+    "createdAt": 1784648090952,
+    "expiresAt": 1784734490952,
+    "lastActivity": 1784648090952
+  },
+  "89c18d652273b69f13befeee5348d9dfff1666b80582abb03ec8acffd9897a54": {
+    "username": "test999",
+    "role": "not_user",
+    "createdAt": 1784648090970,
+    "expiresAt": 1784734490970,
+    "lastActivity": 1784648090970
+  }
+}

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: moderutills
+    runtime: node
+    repo: https://github.com/yroslav567895-rgb/1
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: DATA_DIR
+        value: /data
+      - key: SESSION_SECRET
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
